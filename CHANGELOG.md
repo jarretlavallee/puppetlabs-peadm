@@ -1,5 +1,14 @@
 # PEADM module
 
+## 2.4.3
+### Summary
+
+Bugfix release
+
+### Bugfixes
+
+- This release further remediates the bug fixed in 2.4.2, by ensuring that all peadm-managed node groups preserve existing data or class parameters not explicitly being managed. This is accomplished by requiring a new version of WhatsARanjit-node\_manager, v0.8.0.
+
 ## 2.4.2
 ### Summary
 
