@@ -64,7 +64,12 @@ def wait_until_connected(nodes:, token_file:, timeout: 120)
   inventory = {}
   Timeout.timeout(timeout) do
     loop do
-      response = http.request(request)
+      begin
+        response = http.request(request)
+      rescue Errno::ECONNREFUSED
+        sleep(1)
+        next
+      end
       raise unless response.is_a? Net::HTTPSuccess
       inventory = JSON.parse(response.body)
       break if inventory['items'].all? { |item| item['connected'] }
